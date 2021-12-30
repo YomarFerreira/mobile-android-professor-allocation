@@ -4,11 +4,14 @@ import android.os.Bundle;
 import android.util.Log;
 
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.professorallocation.R;
@@ -27,7 +30,6 @@ public class CadProfessorActivity extends AppCompatActivity {
 
     private ActivityCadProfessorBinding viewBinding;
     private RetrofitConfig retrofitConfig;
-    private ListDeptAdapter lstDeptoAdapter;
 
     @Override
     protected void onResume() {
@@ -40,6 +42,7 @@ public class CadProfessorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         viewBinding = ActivityCadProfessorBinding.inflate(getLayoutInflater());
         setContentView(viewBinding.getRoot());
+        retrofitConfig = new RetrofitConfig();
 
         if (getIntent().hasExtra(DetalhesProfessorActivity.KEY_PROFESSOR)) {
 
@@ -50,40 +53,21 @@ public class CadProfessorActivity extends AppCompatActivity {
             if (professor != null) {
                 viewBinding.edProfessorName.setText(professor.getName());
                 viewBinding.edProfessorCpf.setText(professor.getCpf());
-/////////////???????????????????????????
-                this.lstDeptoAdapter = new ListDeptAdapter();
-                viewBinding.rvListaDepartamentos.setAdapter(this.lstDeptoAdapter);
-
-                retrofitConfig = new RetrofitConfig();
-/////////////???????????????????????????
-
-                viewBinding.btCadProfessor.setOnClickListener(view-> {
+                viewBinding.btCadProfessor.setOnClickListener(view -> {
                     ProfessorPostDto professorPut = new ProfessorPostDto();
                     professorPut.setName(viewBinding.edProfessorName.getText().toString());
                     professorPut.setCpf(viewBinding.edProfessorCpf.getText().toString());
-///////////?????????????????????????????
-                    professorPut.setDepartmentId(viewBinding.rvListaDepartamentos.getId());
-/////////////???????????????????????????
-                    requestUpdateProfessor(professor.getId(), professorPut);
 
+                    requestUpdateProfessor(professor.getId(), professorPut);
                 });
 
             }
-
-        }else{
-
+        } else {
             viewBinding.btCadProfessor.setOnClickListener(view -> registerProfessor());
-
-            this.lstDeptoAdapter = new ListDeptAdapter();
-            viewBinding.rvListaDepartamentos.setAdapter(this.lstDeptoAdapter);
-
-            retrofitConfig = new RetrofitConfig();
-
         }
+    }
 
-     }
-
-    private void requestUpdateProfessor(int idProfessor, ProfessorPostDto professor){
+    private void requestUpdateProfessor(int idProfessor, ProfessorPostDto professor) {
 
         RetrofitConfig config = new RetrofitConfig();
         ProfessorService service = config.getProfessorService();
@@ -91,19 +75,19 @@ public class CadProfessorActivity extends AppCompatActivity {
         service.update(idProfessor, professor).enqueue(new Callback<Professor>() {
             @Override
             public void onResponse(Call<Professor> call, Response<Professor> response) {
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), "Edit performed successfully", Toast.LENGTH_SHORT).show();
                     finish();
 
-                }else{
-                    Toast.makeText(getApplicationContext()," Error: " + response.errorBody().toString(), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), " Error: " + response.errorBody().toString(), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<Professor> call, Throwable t) {
-                Log.e(CadProfessorActivity.class.getSimpleName(),"Comunication error, " + t.getMessage());
-                Toast.makeText(getApplicationContext()," Communication error with the server! ", Toast.LENGTH_SHORT).show();
+                Log.e(CadProfessorActivity.class.getSimpleName(), "Comunication error, " + t.getMessage());
+                Toast.makeText(getApplicationContext(), " Communication error with the server! ", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -115,12 +99,12 @@ public class CadProfessorActivity extends AppCompatActivity {
 
         String nomeProfessor = viewBinding.edProfessorName.getText().toString();
         String numCpf = viewBinding.edProfessorCpf.getText().toString();
-    //    int idDepartment = viewBinding.edDepartmentProf.getId();
+        //    int idDepartment = viewBinding.edDepartmentProf.getId();
 
         ProfessorPostDto professor = new ProfessorPostDto();
         professor.setName(nomeProfessor);
         professor.setCpf(numCpf);
-   //     professor.setDepartmentId(idDepartment);
+        //     professor.setDepartmentId(idDepartment);
 
         RetrofitConfig config = new RetrofitConfig();
         ProfessorService service = config.getProfessorService();
@@ -130,25 +114,23 @@ public class CadProfessorActivity extends AppCompatActivity {
 
                 Professor professorIdShow = response.body();
 
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), "The request was successful - ID. " + professorIdShow.getId(), Toast.LENGTH_SHORT).show();
                     viewBinding.edProfessorName.setText("");
                     viewBinding.edProfessorCpf.setText("");
-                //    viewBinding.edDepartmentProf.setText("");
                     finish();
-                }else{
-                    Toast.makeText(getApplicationContext()," Error: " + response.errorBody().toString(), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), " Error: " + response.errorBody().toString(), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<Professor> call, Throwable t) {
-                Log.e(CadProfessorActivity.class.getSimpleName(),"Comunication error, " + t.getMessage());
-                Toast.makeText(getApplicationContext()," Communication error with the server! ", Toast.LENGTH_SHORT).show();
+                Log.e(CadProfessorActivity.class.getSimpleName(), "Comunication error, " + t.getMessage());
+                Toast.makeText(getApplicationContext(), " Communication error with the server! ", Toast.LENGTH_SHORT).show();
             }
         });
-     }
-
+    }
 
     private void requestCarregarlistaDepts() {
         DepartamentoService service = retrofitConfig.getDepartamentoService();
@@ -157,7 +139,13 @@ public class CadProfessorActivity extends AppCompatActivity {
             public void onResponse(Call<List<Departamento>> call, Response<List<Departamento>> response) {
                 if (response.isSuccessful()) {
                     List<Departamento> list = response.body();
-                    lstDeptoAdapter.setDeptList(list);
+
+                    List<String> nomeDepatamentos = new ArrayList<>();
+                    for (Departamento dp: list) {
+                        nomeDepatamentos.add(dp.getName());
+                    }
+
+                    setupSpinner(nomeDepatamentos, list);
 
                     for (Departamento departamento : list) {
                         Log.d(CadProfessorActivity.class.getSimpleName(), departamento.getName());
@@ -165,7 +153,6 @@ public class CadProfessorActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(getApplicationContext(), " Error: " + response.errorBody().toString(), Toast.LENGTH_SHORT).show();
                 }
-
             }
 
             @Override
@@ -176,11 +163,22 @@ public class CadProfessorActivity extends AppCompatActivity {
         });
     }
 
+    private void setupSpinner(List<String> nomes, List<Departamento> departamentos) {
+        ArrayAdapter<String> spnnerAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, nomes);
+        spnnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        viewBinding.rvListaDepartamentos2.setAdapter(spnnerAdapter);
 
+        viewBinding.rvListaDepartamentos2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long l) {
+                Departamento dp = departamentos.get(pos);
+                Log.d(CadProfessorActivity.class.getSimpleName(), "Selecionado: "+ dp.getName());
+            }
 
-
-
-
-
-
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                // Não faz nada
+            }
+        });
+    }
 }

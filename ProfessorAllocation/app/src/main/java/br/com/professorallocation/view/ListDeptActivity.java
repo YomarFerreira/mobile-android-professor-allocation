@@ -13,11 +13,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import br.com.professorallocation.R;
 import br.com.professorallocation.config.RetrofitConfig;
 import br.com.professorallocation.databinding.ActivityCadProfessorBinding;
+import br.com.professorallocation.databinding.ActivityDepartamentosBinding;
 
 
 public class ListDeptActivity extends AppCompatActivity {
 
-    private @NonNull ActivityCadProfessorBinding viewBinding;
+    private @NonNull ActivityDepartamentosBinding viewBinding;
     private RetrofitConfig retrofitConfig;
     private ListDeptAdapter adapter;
 
@@ -25,7 +26,7 @@ public class ListDeptActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        viewBinding = ActivityCadProfessorBinding.inflate(getLayoutInflater());
+        viewBinding = ActivityDepartamentosBinding.inflate(getLayoutInflater());
         setContentView(viewBinding.getRoot());
 
         this.adapter = new ListDeptAdapter();
@@ -51,11 +52,5 @@ public class ListDeptActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
-
-
-
-
 
 }
