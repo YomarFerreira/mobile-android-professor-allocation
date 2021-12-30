@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="br.com.professorallocation">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_qualiti"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_qualiti_round"
+        android:supportsRtl="true"
+        android:theme="@style/fullScreenProfessorAllocation">
+
+
+
+        <activity
+            android:name=".view.MainActivity"
+            android:exported="true"
+            android:label="Professor Allocation">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+
+        <activity
+            android:name=".view.DetalhesCursoActivity"
+            android:exported="true"
+            android:label="Details Course"
+            android:parentActivityName=".view.CursosActivity" />
+
+        <activity
+            android:name=".view.DetalhesDepartamentoActivity"
+            android:exported="true"
+            android:label="Details Department"
+            android:parentActivityName=".view.DepartamentosActivity" />
+
+        <activity
+            android:name=".view.DetalhesProfessorActivity"
+            android:exported="true"
+            android:label="Details Professor"
+            android:parentActivityName=".view.ProfessorsActivity" />
+
+
+
+        <activity
+            android:name=".view.CadCursoActivity"
+            android:exported="true"
+            android:label="Course Registration"
+            android:parentActivityName=".view.CursosActivity" />
+
+        <activity
+            android:name=".view.CadDepartamentoActivity"
+            android:exported="true"
+            android:label="Department Registration"
+            android:parentActivityName=".view.DepartamentosActivity" />
+
+        <activity
+            android:name=".view.CadProfessorActivity"
+            android:exported="true"
+            android:label="Professor Registration"
+            android:parentActivityName=".view.ProfessorsActivity" />
+
+
+
+        <activity
+            android:name=".view.CursosActivity"
+            android:exported="true"
+            android:label="Course List"
+            android:parentActivityName=".view.MainActivity" />
+
+        <activity
+            android:name=".view.DepartamentosActivity"
+            android:exported="true"
+            android:label="Department List"
+            android:parentActivityName=".view.MainActivity" />
+
+        <activity
+            android:name=".view.ProfessorsActivity"
+            android:exported="true"
+            android:label="Professor List"
+            android:parentActivityName=".view.MainActivity" />
+
+
+
+    </application>
+
+</manifest>

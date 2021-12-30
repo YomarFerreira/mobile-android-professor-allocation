@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".view.CadProfessorActivity">
+
+    <EditText
+        android:id="@+id/edProfessorName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Name of professor"
+        android:inputType="textPersonName"
+        android:textColor="@color/teal_700"
+        app:layout_constraintBottom_toTopOf="@id/edProfessorCpf"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <EditText
+        android:id="@+id/edProfessorCpf"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:hint="CPF of professor"
+        android:inputType="number"
+        android:textColor="@color/teal_700"
+        app:layout_constraintBottom_toTopOf="@+id/rvListaDepartamentos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edProfessorName" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+
+        android:id="@+id/rvListaDepartamentos"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="vertical"
+        android:layout_marginTop="32dp"
+        android:background="#F5F6EE"
+
+        android:clickable="true"
+        android:focusable="true"
+
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp"
+        tools:listitem="@layout/item_layout_departamento_white"
+        tools:context=".view.ListDeptActivity"
+        app:fastScrollEnabled="true"
+        app:fastScrollHorizontalThumbDrawable="@drawable/scrool_thumb_drawable"
+        app:fastScrollHorizontalTrackDrawable="@drawable/scrool_line_drawable"
+        app:fastScrollVerticalThumbDrawable="@drawable/scrool_thumb_drawable"
+        app:fastScrollVerticalTrackDrawable="@drawable/scrool_line_drawable"
+        app:layout_constraintTop_toBottomOf="@id/edProfessorCpf"
+        app:layout_constraintBottom_toTopOf="@+id/btCadProfessor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+    />
+
+    <Spinner
+        android:id="@+id/rvListaDepartamentos2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="30dp"
+        android:maxHeight="30dp"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp"
+        android:background="#F5F6EE"
+
+        tools:context=".view.ListDeptActivity"
+
+        app:layout_constraintTop_toBottomOf="@+id/rvListaDepartamentos"
+        app:layout_constraintBottom_toTopOf="@+id/btCadProfessor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+
+        />
+
+
+    <Button
+        android:id="@+id/btCadProfessor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/teal_700"
+        android:layout_marginBottom="32dp"
+        android:text="Register"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvListaDepartamentos2"
+        />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/arrow_up_float"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        app:srcCompat="@android:drawable/arrow_up_float"
+        app:layout_constraintTop_toTopOf="@id/rvListaDepartamentos"
+        app:layout_constraintEnd_toEndOf="@id/rvListaDepartamentos"/>
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/arrow_down_float"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        app:srcCompat="@android:drawable/arrow_down_float"
+        app:layout_constraintBottom_toBottomOf="@id/rvListaDepartamentos"
+        app:layout_constraintEnd_toEndOf="@id/rvListaDepartamentos"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

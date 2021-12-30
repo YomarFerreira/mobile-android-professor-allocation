@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Professor Allocation</string>
+    <string name="update_button">Update</string>
+    <string name="update_title_course">Data Update - Course</string>
+    <string name="update_title_department">Data Update - Department</string>
+    <string name="update_title_professor">Data Update - Professor</string>
+</resources>
