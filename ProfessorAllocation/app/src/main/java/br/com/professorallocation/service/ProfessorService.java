@@ -2,6 +2,7 @@ package br.com.professorallocation.service;
 
 import java.util.List;
 
+import br.com.professorallocation.model.DepartamentoPostDto;
 import br.com.professorallocation.model.Professor;
 import br.com.professorallocation.model.ProfessorPostDto;
 import retrofit2.Call;

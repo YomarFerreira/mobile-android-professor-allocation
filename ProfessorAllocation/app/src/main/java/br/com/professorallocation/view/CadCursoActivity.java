@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-import java.util.List;
-
 import br.com.professorallocation.R;
 import br.com.professorallocation.config.RetrofitConfig;
 import br.com.professorallocation.databinding.ActivityCadCursoBinding;
@@ -27,6 +25,7 @@ public class CadCursoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         viewBinding = ActivityCadCursoBinding.inflate(getLayoutInflater());
         setContentView(viewBinding.getRoot());
+
         if (getIntent().hasExtra(DetalhesCursoActivity.KEY_COURSE)) {
 
             getSupportActionBar().setTitle(getResources().getString(R.string.update_title_course));
@@ -36,8 +35,10 @@ public class CadCursoActivity extends AppCompatActivity {
             if (curso != null) {
                 viewBinding.edCursoName.setText(curso.getName());
 
+
+
                 viewBinding.btCadCurso.setOnClickListener(view-> {
-                    CursoPostDto cursoPut = new CursoPostDto();
+                    CursoPostDto cursoPut = new CursoPostDto ();
                     cursoPut.setName(viewBinding.edCursoName.getText().toString());
                     requestUpdateCourse(curso.getId(), cursoPut);
                 });
@@ -78,7 +79,7 @@ public class CadCursoActivity extends AppCompatActivity {
 
         String nomeCurso = viewBinding.edCursoName.getText().toString();
 
-        CursoPostDto curso = new CursoPostDto();
+        CursoPostDto curso = new CursoPostDto ();
         curso.setName(nomeCurso);
 
         RetrofitConfig config = new RetrofitConfig();

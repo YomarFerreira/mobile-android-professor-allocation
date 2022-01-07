@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setUpViewCurso();
         setUpViewDepartamento();
         setUpViewProfessor();
+        setUpViewAlocacao();
 
     }
 
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setUpViewDepartamento() {
-        viewBinding.llContentDepto.setOnClickListener(view -> {
+        viewBinding.llContentDepartment.setOnClickListener(view -> {
 
             Intent intent = new Intent(getApplicationContext(), DepartamentosActivity.class);
             startActivity(intent);
@@ -45,11 +46,19 @@ public class MainActivity extends AppCompatActivity {
     private void setUpViewProfessor() {
         viewBinding.llContentProfessor.setOnClickListener(view -> {
 
-            Intent intent = new Intent(getApplicationContext(), ProfessorsActivity.class);
+            Intent intent = new Intent(getApplicationContext(), ProfessoresActivity.class);
             startActivity(intent);
 
         });
     }
 
+    private void setUpViewAlocacao() {
+        viewBinding.llContentAllocation.setOnClickListener(view -> {
+
+            Intent intent = new Intent(getApplicationContext(), AlocacoesActivity.class);
+            startActivity(intent);
+
+        });
+    }
 
 }

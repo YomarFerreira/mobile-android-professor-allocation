@@ -3,6 +3,7 @@ package br.com.professorallocation.service;
 import java.util.List;
 
 import br.com.professorallocation.model.Curso;
+
 import br.com.professorallocation.model.CursoPostDto;
 import retrofit2.Call;
 import retrofit2.http.Body;

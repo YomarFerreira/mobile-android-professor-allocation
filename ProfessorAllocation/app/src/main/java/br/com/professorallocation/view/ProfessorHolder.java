@@ -20,10 +20,11 @@ public class ProfessorHolder extends RecyclerView.ViewHolder {
     }
 
     public void bind(Professor professor, ActionProfessorClick itemClick){
-        viewBind.tvIdValue.setText(String.valueOf(professor.getId()));
-        viewBind.tvItemValue.setText(professor.getName());
+        viewBind.tvIdProfessor.setText(String.valueOf(professor.getId()));
+        viewBind.tvProfessorName.setText(professor.getName());
         String cpfstr =(professor.getCpf().substring(0,3) + "." + professor.getCpf().substring(3,6) + "." + professor.getCpf().substring(6,9) + "-" + professor.getCpf().substring(9,11));
-        viewBind.tvItemValue2.setText(cpfstr);
+        viewBind.tvProfessorCpf.setText(cpfstr);
+        viewBind.tvDepartmentProfessor.setText(professor.getDepartment().getName());
 
         viewBind.clContainerItem.setOnLongClickListener(view ->{
             itemClick.removeProfessorClick(professor);

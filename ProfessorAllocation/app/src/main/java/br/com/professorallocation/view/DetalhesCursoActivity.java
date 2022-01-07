@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import br.com.professorallocation.R;
 import br.com.professorallocation.config.RetrofitConfig;
-import br.com.professorallocation.databinding.ActivityCadCursoBinding;
 import br.com.professorallocation.databinding.ActivityDetalhesCursoBinding;
 import br.com.professorallocation.model.Alocacao;
 import br.com.professorallocation.model.Curso;
@@ -51,20 +50,11 @@ public class DetalhesCursoActivity extends AppCompatActivity {
     }
 
     private void setupView(Curso curso){
-        if(curso.getAllocations() != null && !curso.getAllocations().isEmpty()){
-            binding.tvCourse.setText(curso.getName());
-            Alocacao alocacao = curso.getAllocations().get(0);
-            binding.tvAllocationDayOfWeek.setText(alocacao.getDayOfWeek());
-            binding.tvAllocationStart.setText(alocacao.getStartHour());
-            binding.tvAllocationEnd.setText(alocacao.getEndHour());
-            binding.tvAllocationProfessor.setText(alocacao.getProfessor().getName());
-        }else{
-            binding.tvCourse.setText(curso.getName());
-            binding.tvAllocationDayOfWeek.setText("No allocation");
-            binding.tvAllocationStart.setText("NA");
-            binding.tvAllocationEnd.setText("NA");
-            binding.tvAllocationProfessor.setText("NA");
-        }
+
+        binding.tvIdCourse.setText(String.valueOf(curso.getId()));
+        binding.tvNameCourse.setText(curso.getName());
+
+
     }
     
     private void requestGetById(int idCurso){

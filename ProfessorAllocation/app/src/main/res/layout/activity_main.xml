@@ -69,7 +69,7 @@
         android:gravity="center"
         android:orientation="vertical"
         android:padding="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/llContentDepto"
+        app:layout_constraintBottom_toTopOf="@+id/llContentDepartment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/llContentAllocation"
         app:layout_constraintTop_toTopOf="parent">
@@ -106,7 +106,7 @@
         android:orientation="vertical"
         android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/llContentDepto"
+        app:layout_constraintEnd_toStartOf="@id/llContentDepartment"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/llContentAllocation"
         >
@@ -133,7 +133,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/llContentDepto"
+        android:id="@+id/llContentDepartment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"

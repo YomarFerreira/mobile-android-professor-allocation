@@ -43,7 +43,13 @@
             android:name=".view.DetalhesProfessorActivity"
             android:exported="true"
             android:label="Details Professor"
-            android:parentActivityName=".view.ProfessorsActivity" />
+            android:parentActivityName=".view.ProfessoresActivity" />
+
+        <activity
+            android:name=".view.DetalhesAlocacaoActivity"
+            android:exported="true"
+            android:label="Details Allocation"
+            android:parentActivityName=".view.AlocacoesActivity" />
 
 
 
@@ -63,7 +69,13 @@
             android:name=".view.CadProfessorActivity"
             android:exported="true"
             android:label="Professor Registration"
-            android:parentActivityName=".view.ProfessorsActivity" />
+            android:parentActivityName=".view.ProfessoresActivity" />
+
+        <activity
+            android:name=".view.CadAlocacaoActivity"
+            android:exported="true"
+            android:label="Allocations Registration"
+            android:parentActivityName=".view.AlocacoesActivity" />
 
 
 
@@ -80,11 +92,16 @@
             android:parentActivityName=".view.MainActivity" />
 
         <activity
-            android:name=".view.ProfessorsActivity"
+            android:name=".view.ProfessoresActivity"
             android:exported="true"
             android:label="Professor List"
             android:parentActivityName=".view.MainActivity" />
 
+        <activity
+            android:name=".view.AlocacoesActivity"
+            android:exported="true"
+            android:label="Allocation List"
+            android:parentActivityName=".view.MainActivity" />
 
 
     </application>

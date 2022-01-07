@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    tools:context=".view.DetalhesAlocacaoActivity">
+
+
+    <LinearLayout
+        android:id="@+id/LienarLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:maxHeight="300dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="100dp"
+        >
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            android:layout_weight="1"
+            android:background="#ECEDEE"
+            />
+    </LinearLayout>
+
+
+
+    <TextView
+        android:id="@+id/tvLabelAllocationCourseDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:text="Curso"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@id/LienarLayout1"
+        app:layout_constraintEnd_toStartOf="@id/tvLabelAllocationCourseDetails"
+        app:layout_constraintTop_toTopOf="@id/LienarLayout1"
+        app:layout_constraintBottom_toTopOf="@id/tvLabelAllocationDayDetails"
+    />
+
+    <TextView
+        android:id="@+id/tvAllocationCourseDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/teal_700"
+        android:textSize="16sp"
+        tools:text="Curso Alocado"
+        android:layout_marginLeft="5dp"
+        app:layout_constraintStart_toEndOf="@+id/tvLabelAllocationCourseDetails"
+        app:layout_constraintBottom_toBottomOf="@id/tvLabelAllocationCourseDetails"
+    />
+
+    <TextView
+        android:id="@+id/tvLabelAllocationDayDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:text="Dia"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintStart_toStartOf="@id/LienarLayout1"
+        app:layout_constraintTop_toBottomOf="@+id/tvLabelAllocationCourseDetails"
+        app:layout_constraintBottom_toTopOf="@id/tvLabelAllocationStartHourDetails"    />
+
+    <TextView
+        android:id="@+id/tvAllocationDayDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/teal_700"
+        android:textSize="17sp"
+        tools:text="Dia da Semana Alocado"
+        android:layout_marginLeft="5dp"
+        app:layout_constraintStart_toEndOf="@+id/tvLabelAllocationDayDetails"
+        app:layout_constraintTop_toTopOf="@+id/tvLabelAllocationDayDetails"
+        app:layout_constraintBottom_toBottomOf="@id/tvLabelAllocationDayDetails"
+    />
+
+    <TextView
+        android:id="@+id/tvLabelAllocationStartHourDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:text="Start Hour"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintStart_toStartOf="@id/LienarLayout1"
+        app:layout_constraintTop_toBottomOf="@+id/tvLabelAllocationDayDetails"
+        app:layout_constraintBottom_toTopOf="@id/tvLabelAllocationProfessorDetails"
+    />
+
+    <TextView
+        android:id="@+id/tvAllocationStartHourDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/teal_700"
+        android:textSize="17sp"
+        tools:text="Hora Inicial"
+        android:layout_marginLeft="5dp"
+        app:layout_constraintStart_toEndOf="@+id/tvLabelAllocationStartHourDetails"
+        app:layout_constraintTop_toTopOf="@+id/tvLabelAllocationStartHourDetails"
+        app:layout_constraintBottom_toBottomOf="@id/tvLabelAllocationStartHourDetails"
+    />
+
+    <TextView
+        android:id="@+id/tvLabelAllocationEndHourDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:text="End Hour"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintStart_toEndOf="@+id/tvAllocationStartHourDetails"
+        app:layout_constraintTop_toTopOf="@+id/tvLabelAllocationStartHourDetails"
+        app:layout_constraintBottom_toBottomOf="@id/tvAllocationStartHourDetails"
+    />
+
+    <TextView
+        android:id="@+id/tvAllocationEndHourDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/teal_700"
+        android:textSize="17sp"
+        tools:text="Hora Final"
+        android:layout_marginLeft="5dp"
+        app:layout_constraintStart_toEndOf="@+id/tvLabelAllocationEndHourDetails"
+        app:layout_constraintTop_toTopOf="@+id/tvLabelAllocationStartHourDetails"
+        app:layout_constraintBottom_toBottomOf="@id/tvLabelAllocationStartHourDetails"
+    />
+
+    <TextView
+        android:id="@+id/tvLabelAllocationProfessorDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:text="Professor"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintStart_toStartOf="@id/LienarLayout1"
+        app:layout_constraintTop_toBottomOf="@+id/tvLabelAllocationStartHourDetails"
+        app:layout_constraintBottom_toBottomOf="@id/LienarLayout1"
+    />
+
+    <TextView
+        android:id="@+id/tvAllocationProfessorDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/teal_700"
+        android:textSize="17sp"
+        tools:text="Professor Alocado"
+        android:layout_marginLeft="5dp"
+        app:layout_constraintStart_toEndOf="@+id/tvLabelAllocationProfessorDetails"
+        app:layout_constraintTop_toTopOf="@+id/tvLabelAllocationProfessorDetails"
+        app:layout_constraintBottom_toBottomOf="@+id/tvLabelAllocationProfessorDetails"
+    />
+
+
+    <View
+        android:id="@+id/dividerHUp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toTopOf="@+id/tvLabelAllocationDayDetails"
+        app:layout_constraintEnd_toEndOf="@id/LienarLayout1"
+        app:layout_constraintStart_toStartOf="@id/LienarLayout1"
+        app:layout_constraintTop_toBottomOf="@+id/tvAllocationCourseDetails"
+    />
+
+    <View
+        android:id="@+id/dividerHDown"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="@id/LienarLayout1"
+        app:layout_constraintStart_toStartOf="@id/LienarLayout1"
+        app:layout_constraintTop_toBottomOf="@+id/tvLabelAllocationStartHourDetails"
+        app:layout_constraintBottom_toTopOf="@+id/tvLabelAllocationProfessorDetails"
+    />
+
+    <ProgressBar
+        android:id="@+id/pbLoading"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:indeterminateTint="@color/personal0002"
+        app:layout_constraintBottom_toBottomOf="@+id/tvLabelAllocationProfessorDetails"
+        app:layout_constraintEnd_toEndOf="@id/LienarLayout1"
+        app:layout_constraintStart_toStartOf="@id/LienarLayout1"
+        app:layout_constraintTop_toTopOf="@+id/tvLabelAllocationCourseDetails" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

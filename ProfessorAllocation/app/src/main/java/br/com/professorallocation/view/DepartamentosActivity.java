@@ -45,7 +45,7 @@ public class DepartamentosActivity extends AppCompatActivity {
 
         this.adapter = new DepartamentoAdapter();
 
-        this.adapter.setActionDepartamentoClick(new ActionListDeptClick() {
+        this.adapter.setActionDepartamentoClick(new ActionDepartamentoClick() {
             @Override
             public void removeDepartamentoClick(Departamento departamento) {
                 dialogConfirmation(departamento);
@@ -53,7 +53,7 @@ public class DepartamentosActivity extends AppCompatActivity {
 
         });
 
-        viewBinding.rvListaDepartamentos.setAdapter(this.adapter);
+        viewBinding.spinListDepartments.setAdapter(this.adapter);
 
         retrofitConfig = new RetrofitConfig();
     }

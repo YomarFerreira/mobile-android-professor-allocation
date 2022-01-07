@@ -1,18 +1,17 @@
 package br.com.professorallocation.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.io.Serializable;
 import java.util.List;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+//@JsonIgnoreProperties(ignoreUnknown = true)
 public class Professor implements Serializable {
 
     private int id;
     private String name;
     private String cpf;
     private int departmentId;
-    private List<Departamento> departments;
+    private Departamento department;
     private List<Alocacao> allocations;
 
     public int getId() {return id;}
@@ -31,9 +30,9 @@ public class Professor implements Serializable {
 
     public void setDepartmentId(int departmentId) { this.departmentId = departmentId; }
 
-    public List<Departamento> getDepartments() { return departments; }
+    public Departamento getDepartment() { return department; }
 
-    public void setDepartments(List<Departamento> departments) { this.departments = departments; }
+    public void setDepartment(Departamento department) { this.department = department; }
 
     public List<Alocacao> getAllocations() { return allocations; }
 

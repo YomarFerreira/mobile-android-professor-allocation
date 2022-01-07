@@ -7,11 +7,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import br.com.professorallocation.databinding.ItemLayoutCursoBinding;
 import br.com.professorallocation.model.Curso;
-import br.com.professorallocation.model.Departamento;
 
 public class CursoAdapter extends RecyclerView.Adapter<CursoHolder> {
 
@@ -24,6 +25,18 @@ public class CursoAdapter extends RecyclerView.Adapter<CursoHolder> {
 
     public void setCursosList(List<Curso> cursosList){
         this.cursosList.clear();
+
+        Collections.sort(cursosList, new Comparator<Curso>() {
+            @Override
+            public int compare(Curso item1, Curso item2) {
+                //Alfabetico
+                // return item1.getName().compareToIgnoreCase(item2.getName());
+
+                // -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
+                return item1.getId() < item2.getId() ? -1 : (item1.getId() < item2.getId()) ? 1 : 0;
+            }
+        });
+
         this.cursosList.addAll(cursosList);
         notifyDataSetChanged();
     }

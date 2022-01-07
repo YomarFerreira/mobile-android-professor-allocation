@@ -4,4 +4,5 @@
     <string name="update_title_course">Data Update - Course</string>
     <string name="update_title_department">Data Update - Department</string>
     <string name="update_title_professor">Data Update - Professor</string>
+    <string name="update_title_allocation">Data Update - Allocation</string>
 </resources>

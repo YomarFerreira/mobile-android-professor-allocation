@@ -16,6 +16,7 @@ import br.com.professorallocation.R;
 import br.com.professorallocation.config.RetrofitConfig;
 import br.com.professorallocation.databinding.ActivityDetalhesProfessorBinding;
 import br.com.professorallocation.model.Alocacao;
+import br.com.professorallocation.model.Departamento;
 import br.com.professorallocation.model.Professor;
 import br.com.professorallocation.service.ProfessorService;
 import retrofit2.Call;
@@ -50,26 +51,13 @@ public class DetalhesProfessorActivity extends AppCompatActivity {
     }
 
     private void setupView(Professor professor){
-        if(professor.getAllocations() != null && !professor.getAllocations().isEmpty()){
-            binding.tvProfessor.setText(professor.getName());
-            String cpfstr =(professor.getCpf().substring(0,3) + "." + professor.getCpf().substring(3,6) + "." + professor.getCpf().substring(6,9) + "-" + professor.getCpf().substring(9,11));
-            binding.tvProfessorCpf.setText(cpfstr);
-           // binding.tvProfessor.setText(professor.getDepartmentId());
-            Alocacao alocacao = professor.getAllocations().get(0);
-            binding.tvAllocationDayOfWeek.setText(alocacao.getDayOfWeek());
-            binding.tvAllocationStart.setText(alocacao.getStartHour());
-            binding.tvAllocationEnd.setText(alocacao.getEndHour());
-            binding.tvAllocationProfessor.setText(alocacao.getProfessor().getName());
-        }else{
-            binding.tvProfessor.setText(professor.getName());
-            String cpfstr =(professor.getCpf().substring(0,3) + "." + professor.getCpf().substring(3,6) + "." + professor.getCpf().substring(6,9) + "-" + professor.getCpf().substring(9,11));
-            binding.tvProfessorCpf.setText(cpfstr);
-           // binding.tvProfessor.setText(professor.getDepartmentId());
-            binding.tvAllocationDayOfWeek.setText("No allocation");
-            binding.tvAllocationStart.setText("NA");
-            binding.tvAllocationEnd.setText("NA");
-            binding.tvAllocationProfessor.setText("NA");
-        }
+
+        binding.tvIdProfessor.setText(String.valueOf(professor.getId()));
+        binding.tvNameProfessor.setText(professor.getName());
+        String cpfstr =(professor.getCpf().substring(0,3) + "." + professor.getCpf().substring(3,6) + "." + professor.getCpf().substring(6,9) + "-" + professor.getCpf().substring(9,11));
+        binding.tvCpfProfessor.setText(cpfstr);
+        binding.tvDepartmentProfessor.setText(professor.getDepartment().getName());
+
     }
     
     private void requestGetById(int idProfessor){

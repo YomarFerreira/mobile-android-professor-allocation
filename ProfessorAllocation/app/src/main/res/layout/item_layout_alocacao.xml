@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/clContainerItem"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:layout_marginTop="8dp"
+    android:background="@color/teal_700"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/tvIdAlocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Id"
+        />
+
+    <TextView
+        android:id="@+id/tvCursoAllocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Personal0009"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="5dp"
+        app:layout_constraintStart_toEndOf="@id/tvIdAlocation"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Curso"
+        />
+
+    <TextView
+        android:id="@+id/tvDayAllocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvIdAlocation"
+        tools:text="Dia Semana"
+        />
+
+    <TextView
+        android:id="@+id/tvStartHourAllocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@id/tvDayAllocation"
+        app:layout_constraintStart_toEndOf="@id/tvDayAllocation"
+        app:layout_constraintEnd_toStartOf="@id/tvEndHourAllocation"
+        tools:text="Hora Inicio"
+        />
+
+    <TextView
+        android:id="@+id/tvEndHourAllocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@id/tvStartHourAllocation"
+        app:layout_constraintStart_toEndOf="@id/tvStartHourAllocation"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="Hora Fim"
+        />
+
+
+    <TextView
+        android:id="@+id/tvProfessorAllocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:paddingTop="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvDayAllocation"
+        tools:text="Professor"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

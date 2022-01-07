@@ -10,7 +10,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
-        android:id="@+id/tvIdValue"
+        android:id="@+id/tvIdCourse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
@@ -18,17 +18,17 @@
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/tvIdValue"
+        app:layout_constraintEnd_toStartOf="@id/tvCourseName"
         app:layout_constraintHorizontal_weight="1"
         tools:text="Id"
         />
 
     <TextView
-        android:id="@+id/tvItemValue"
+        android:id="@+id/tvCourseName"
         android:layout_width="295dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textColor="@color/Personal0009"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

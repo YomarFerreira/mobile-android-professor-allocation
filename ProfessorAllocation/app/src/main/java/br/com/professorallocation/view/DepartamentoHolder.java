@@ -19,9 +19,9 @@ public class DepartamentoHolder extends RecyclerView.ViewHolder {
         viewBind = itemView;
     }
 
-    public void bind(Departamento departamento, ActionListDeptClick itemClick){
-        viewBind.tvIdValue.setText(String.valueOf(departamento.getId()));
-        viewBind.tvItemValue.setText(departamento.getName());
+    public void bind(Departamento departamento, ActionDepartamentoClick itemClick){
+        viewBind.tvIdDepartment.setText(String.valueOf(departamento.getId()));
+        viewBind.tvDepartmentName.setText(departamento.getName());
 
         viewBind.clContainerItem.setOnLongClickListener(view ->{
             itemClick.removeDepartamentoClick(departamento);

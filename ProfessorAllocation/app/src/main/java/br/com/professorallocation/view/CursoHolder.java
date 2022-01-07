@@ -20,8 +20,8 @@ public class CursoHolder extends RecyclerView.ViewHolder {
     }
 
     public void bind(Curso curso, ActionCursoClick itemClick){
-        viewBind.tvIdValue.setText(String.valueOf(curso.getId()));
-        viewBind.tvItemValue.setText(curso.getName());
+        viewBind.tvIdCourse.setText(String.valueOf(curso.getId()));
+        viewBind.tvCourseName.setText(curso.getName());
 
         viewBind.clContainerItem.setOnLongClickListener(view ->{
             itemClick.removeCursoClick(curso);

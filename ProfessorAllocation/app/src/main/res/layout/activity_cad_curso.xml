@@ -7,6 +7,20 @@
     android:padding="16dp"
     tools:context=".view.CadCursoActivity">
 
+
+    <TextView
+        android:id="@+id/textView0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Course"
+        android:textSize="17sp"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/edCursoName"
+        />
+
+
     <EditText
         android:id="@+id/edCursoName"
         android:layout_width="0dp"
@@ -14,11 +28,10 @@
         android:inputType="textPersonName"
         android:textColor="@color/teal_700"
         android:hint="Name of course"
-        app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintBottom_toTopOf="@+id/btCadCurso"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/textView0" />
 
     <Button
         android:id="@+id/btCadCurso"
@@ -30,7 +43,7 @@
         android:textSize="17sp"
         android:textStyle="bold"
         android:textColor="@color/white"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintTop_toBottomOf="@+id/edCursoName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

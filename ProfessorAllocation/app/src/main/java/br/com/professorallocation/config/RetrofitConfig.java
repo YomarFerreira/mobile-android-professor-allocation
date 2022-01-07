@@ -1,5 +1,6 @@
 package br.com.professorallocation.config;
 
+import br.com.professorallocation.service.AlocacaoService;
 import br.com.professorallocation.service.CursoService;
 import br.com.professorallocation.service.DepartamentoService;
 import br.com.professorallocation.service.ProfessorService;
@@ -24,4 +25,7 @@ public class RetrofitConfig {
     public DepartamentoService getDepartamentoService() { return this.retrofit.create(DepartamentoService.class); }
 
     public ProfessorService getProfessorService() { return this.retrofit.create(ProfessorService.class); }
+
+    public AlocacaoService getAlocacaoService() { return this.retrofit.create(AlocacaoService.class); }
+
 }

@@ -10,7 +10,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
-        android:id="@+id/tvIdValue"
+        android:id="@+id/tvIdProfessor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
@@ -18,36 +18,48 @@
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/tvIdValue"
+        app:layout_constraintEnd_toStartOf="@id/tvProfessorName"
         app:layout_constraintHorizontal_weight="1"
         tools:text="Id"
         />
 
     <TextView
-        android:id="@+id/tvItemValue"
+        android:id="@+id/tvProfessorName"
         android:layout_width="175dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textColor="@color/Personal0009"
+        android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/tvIdValue"
-        app:layout_constraintEnd_toStartOf="@id/tvItemValue2"
+        app:layout_constraintStart_toEndOf="@id/tvIdProfessor"
+        app:layout_constraintEnd_toStartOf="@id/tvProfessorCpf"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Nome Professor"
         />
 
     <TextView
-        android:id="@+id/tvItemValue2"
+        android:id="@+id/tvProfessorCpf"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/tvItemValue"
+        app:layout_constraintStart_toEndOf="@id/tvProfessorName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Cpf"
         />
 
+    <TextView
+        android:id="@+id/tvDepartmentProfessor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:paddingTop="5dp"
+        app:layout_constraintStart_toStartOf="@id/tvProfessorName"
+        app:layout_constraintTop_toBottomOf="@id/tvProfessorName"
+        tools:text="Departamento Professor"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

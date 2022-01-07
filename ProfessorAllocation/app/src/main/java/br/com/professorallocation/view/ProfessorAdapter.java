@@ -7,6 +7,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import br.com.professorallocation.databinding.ItemLayoutProfessorBinding;
@@ -23,6 +25,18 @@ public class ProfessorAdapter extends RecyclerView.Adapter<ProfessorHolder> {
 
     public void setProfessorsList(List<Professor> professorsList){
         this.professorsList.clear();
+
+        Collections.sort(professorsList, new Comparator<Professor>() {
+            @Override
+            public int compare(Professor item1, Professor item2) {
+                //Alfabetico
+                // return item1.getName().compareToIgnoreCase(item2.getName());
+
+                // -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
+                return item1.getId() < item2.getId() ? -1 : (item1.getDepartmentId() < item2.getDepartmentId()) ? 1 : 0;
+            }
+        });
+
         this.professorsList.addAll(professorsList);
         notifyDataSetChanged();
     }

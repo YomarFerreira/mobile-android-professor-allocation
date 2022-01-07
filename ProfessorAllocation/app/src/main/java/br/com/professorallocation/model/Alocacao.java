@@ -1,35 +1,59 @@
 package br.com.professorallocation.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 
-@JsonIgnoreProperties(value = {"course", "id"})
+
 public class Alocacao implements Serializable {
 
     private int id;
-    private String dayOfWeek;
-    private String startHour;
-    private String endHour;
+    private String day;
+    @JsonFormat(pattern = "HH:mmZ", shape = JsonFormat.Shape.STRING)
+    private Date startHour;
+    @JsonFormat(pattern = "HH:mmZ", shape = JsonFormat.Shape.STRING)
+    private Date endHour;
+
+    private int courseId;
+    private int professorId;
+    private Curso course;
     private Professor professor;
 
     public int getId() {return id;}
 
     public void setId(int id) {this.id = id;}
 
-    public String getDayOfWeek() {return dayOfWeek;}
+    public String getDay() {return day;}
 
-    public void setDayOfWeek(String dayOfWeek) {this.dayOfWeek = dayOfWeek;}
+    public void setDay(String day) {this.day = day;}
 
-    public String getStartHour() {return startHour;}
+    public Date getStartHour() { return startHour; }
 
-    public void setStartHour(String startHour) {this.startHour = startHour;}
+    public void setStartHour(Date startHour) { this.startHour = startHour; }
 
-    public String getEndHour() {return endHour;}
+    public Date getEndHour() { return endHour; }
 
-    public void setEndHour(String endHour) {this.endHour = endHour;}
+    public void setEndHour(Date endHour) { this.endHour = endHour; }
 
-    public Professor getProfessor() {return professor;}
+    public int getCourseId() { return courseId; }
 
-    public void setProfessor(Professor professor) {this.professor = professor;}
+    public void setCourseId(int courseId) { this.courseId = courseId; }
+
+    public int getProfessorId() { return professorId; }
+
+    public void setProfessorId(int professorId) { this.professorId = professorId; }
+
+    public Curso getCourse() { return course; }
+
+    public void setCourse(Curso course) { this.course = course; }
+
+    public Professor getProfessor() { return professor; }
+
+    public void setProfessor(Professor professor) { this.professor = professor; }
+
+
+
 }
+

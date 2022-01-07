@@ -7,191 +7,98 @@
     android:padding="24dp"
     tools:context=".view.DetalhesCursoActivity">
 
+    <LinearLayout
+        android:id="@+id/LienarLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:maxHeight="150dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="100dp"
+    >
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:background="#ECEDEE"
+
+        />
+    </LinearLayout>
+
+
     <TextView
-        android:id="@+id/tvLabelCourse"
+        android:id="@+id/tvLabelIdCourse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#000000"
-        android:textSize="16sp"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:text="Id"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@id/LienarLayout1"
+        app:layout_constraintTop_toTopOf="@id/LienarLayout1"
+        app:layout_constraintBottom_toTopOf="@id/tvLabelNameCourse"
+    />
+
+    <TextView
+        android:id="@+id/tvIdCourse"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/teal_700"
+        android:textSize="17sp"
+        tools:text="Id of Course"
+        android:layout_marginLeft="5dp"
+        app:layout_constraintStart_toEndOf="@id/tvLabelIdCourse"
+        app:layout_constraintTop_toTopOf="@+id/tvLabelIdCourse"
+        app:layout_constraintBottom_toBottomOf="@id/tvLabelIdCourse"
+    />
+
+
+   <TextView
+        android:id="@+id/tvLabelNameCourse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textSize="17sp"
         android:textStyle="bold"
         android:text="Course"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+       android:layout_marginTop="20dp"
+       android:layout_marginLeft="10dp"
+       app:layout_constraintStart_toStartOf="@id/LienarLayout1"
+       app:layout_constraintTop_toBottomOf="@id/tvLabelIdCourse"
+       app:layout_constraintBottom_toTopOf="@id/tvNameCourse"
+    />
 
     <TextView
-        android:id="@+id/tvCourse"
+        android:id="@+id/tvNameCourse"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:textColor="@color/teal_700"
-        android:textSize="16sp"
+        android:textSize="17sp"
         tools:text="Name Of Course"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvLabelCourse"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginLeft="10dp"
+        app:layout_constraintStart_toStartOf="@id/LienarLayout1"
+        app:layout_constraintTop_toBottomOf="@+id/tvLabelNameCourse"
+        app:layout_constraintBottom_toBottomOf="@id/LienarLayout1"
+    />
 
-    <TextView
-        android:id="@+id/tvLabelAllocationTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Allocation"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/tvLabelCourse"
-        app:layout_constraintTop_toBottomOf="@+id/tvLabelCourse" />
-
-    <TextView
-        android:id="@+id/tvLabelAllocationDayOfWeek"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:text="Day of Week"
-        app:layout_constraintStart_toStartOf="@+id/tvLabelAllocationTitle"
-        app:layout_constraintTop_toBottomOf="@+id/tvLabelAllocationTitle" />
-
-    <TextView
-        android:id="@+id/tvAllocationDayOfWeek"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:textColor="@color/teal_700"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvLabelAllocationDayOfWeek"
-        app:layout_constraintTop_toTopOf="@+id/tvLabelAllocationDayOfWeek"
-        tools:text="Day of week"
-        />
-
-    <TextView
-        android:id="@+id/tvLabelAllocationStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:text="Start"
-        app:layout_constraintStart_toStartOf="@+id/tvLabelAllocationTitle"
-        app:layout_constraintTop_toBottomOf="@+id/tvLabelAllocationDayOfWeek"
-        />
-
-    <TextView
-        android:id="@+id/tvAllocationStart"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:textColor="@color/teal_700"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvLabelAllocationStart"
-        app:layout_constraintTop_toTopOf="@+id/tvLabelAllocationStart"
-        tools:text="Start"
-        />
-
-    <TextView
-        android:id="@+id/tvLabelAllocationEnd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:text="End"
-        app:layout_constraintStart_toStartOf="@+id/tvLabelAllocationTitle"
-        app:layout_constraintTop_toBottomOf="@+id/tvLabelAllocationStart"
-        />
-
-    <TextView
-        android:id="@+id/tvAllocationEnd"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:textColor="@color/teal_700"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvLabelAllocationEnd"
-        app:layout_constraintTop_toTopOf="@+id/tvLabelAllocationEnd"
-        tools:text="End"
-        />
-
-    <TextView
-        android:id="@+id/tvLabelAllocationProfessor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:text="Professor"
-        app:layout_constraintStart_toStartOf="@+id/tvLabelAllocationTitle"
-        app:layout_constraintTop_toBottomOf="@+id/tvLabelAllocationEnd" />
-
-      <TextView
-        android:id="@+id/tvAllocationProfessor"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:textColor="@color/teal_700"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/tvLabelAllocationProfessor"
-        app:layout_constraintTop_toTopOf="@+id/tvLabelAllocationProfessor"
-        tools:text="Name of Professor" />
-
-    <View
-        android:id="@+id/dividerHUp"
-        android:layout_width="409dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toTopOf="@+id/tvLabelAllocationTitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCourse" />
-
-    <View
-        android:id="@+id/dividerHDown"
-        android:layout_width="409dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAllocationProfessor" />
-
-    <View
-        android:id="@+id/dividerVLeft"
-        android:layout_width="1dp"
-        android:layout_height="85dp"
-        android:layout_marginRight="1dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toBottomOf="@+id/tvLabelAllocationEnd"
-        app:layout_constraintEnd_toStartOf="@+id/tvLabelAllocationStart"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <ProgressBar
         android:id="@+id/pbLoading"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:indeterminateTint="@color/personal0002"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/LienarLayout1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/LienarLayout1"
+    />
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -50,20 +50,11 @@ public class DetalhesDepartamentoActivity extends AppCompatActivity {
     }
 
     private void setupView(Departamento departamento){
-        if(departamento.getAllocations() != null && !departamento.getAllocations().isEmpty()){
-            binding.tvDepartment.setText(departamento.getName());
-            Alocacao alocacao = departamento.getAllocations().get(0);
-            binding.tvAllocationDayOfWeek.setText(alocacao.getDayOfWeek());
-            binding.tvAllocationStart.setText(alocacao.getStartHour());
-            binding.tvAllocationEnd.setText(alocacao.getEndHour());
-            binding.tvAllocationProfessor.setText(alocacao.getProfessor().getName());
-        }else{
-            binding.tvDepartment.setText(departamento.getName());
-            binding.tvAllocationDayOfWeek.setText("No allocation");
-            binding.tvAllocationStart.setText("NA");
-            binding.tvAllocationEnd.setText("NA");
-            binding.tvAllocationProfessor.setText("NA");
-        }
+
+
+        binding.tvIdDepartment.setText(String.valueOf(departamento.getId()));
+        binding.tvNameDepartment.setText(departamento.getName());
+
     }
     
     private void requestGetById(int idDepartamento){
