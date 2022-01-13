@@ -20,10 +20,10 @@
         <entry key="..\:/Users/Yomar/androidStudio-Workspace/RECODE/ProfessorAllocation/app/src/main/res/layout/activity_cad_alocacao.xml" value="0.264" />
         <entry key="..\:/Users/Yomar/androidStudio-Workspace/RECODE/ProfessorAllocation/app/src/main/res/layout/activity_cad_curso.xml" value="0.264" />
         <entry key="..\:/Users/Yomar/androidStudio-Workspace/RECODE/ProfessorAllocation/app/src/main/res/layout/activity_cad_departamento.xml" value="0.264" />
-        <entry key="..\:/Users/Yomar/androidStudio-Workspace/RECODE/ProfessorAllocation/app/src/main/res/layout/activity_cad_professor.xml" value="0.264" />
+        <entry key="..\:/Users/Yomar/androidStudio-Workspace/RECODE/ProfessorAllocation/app/src/main/res/layout/activity_cad_professor.xml" value="0.22433460076045628" />
         <entry key="..\:/Users/Yomar/androidStudio-Workspace/RECODE/ProfessorAllocation/app/src/main/res/layout/activity_cursos.xml" value="0.264" />
         <entry key="..\:/Users/Yomar/androidStudio-Workspace/RECODE/ProfessorAllocation/app/src/main/res/layout/activity_departamentos.xml" value="0.264" />
-        <entry key="..\:/Users/Yomar/androidStudio-Workspace/RECODE/ProfessorAllocation/app/src/main/res/layout/activity_detalhes_alocacao.xml" value="0.4" />
+        <entry key="..\:/Users/Yomar/androidStudio-Workspace/RECODE/ProfessorAllocation/app/src/main/res/layout/activity_detalhes_alocacao.xml" value="0.15485564304461943" />
         <entry key="..\:/Users/Yomar/androidStudio-Workspace/RECODE/ProfessorAllocation/app/src/main/res/layout/activity_detalhes_curso.xml" value="0.2755905511811024" />
         <entry key="..\:/Users/Yomar/androidStudio-Workspace/RECODE/ProfessorAllocation/app/src/main/res/layout/activity_detalhes_departamento.xml" value="0.1" />
         <entry key="..\:/Users/Yomar/androidStudio-Workspace/RECODE/ProfessorAllocation/app/src/main/res/layout/activity_detalhes_professor.xml" value="0.264" />
@@ -45,6 +45,8 @@
         <entry key="..\:/Users/Yomar/androidStudio-Workspace/RECODE/ProfessorAllocation/app/src/main/res/menu/menu_cadastro.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Yomar/androidStudio-Workspace/RECODE/ProfessorAllocation/app/src/main/res/menu/menu_edit.xml" value="0.152" />
         <entry key="..\:/Users/Yomar/androidStudio-Workspace/RECODE/ProfessorAllocation/app/src/main/res/menu/menu_register.xml" value="0.264" />
+        <entry key="..\:/Users/Yomar/androidStudio-Workspace/RECODE/ProfessorAllocation/app/src/main/res/menu/menu_register_alloc.xml" value="0.17314814814814813" />
+        <entry key="..\:/Users/Yomar/androidStudio-Workspace/RECODE/ProfessorAllocation/app/src/main/res/menu/menu_register_search.xml" value="0.1" />
         <entry key="..\:/Users/Yomar/androidStudio-Workspace/RECODE/ProfessorAllocation/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.12962962962962962" />
         <entry key="..\:/Users/Yomar/androidStudio-Workspace/RECODE/ProfessorAllocation/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.12962962962962962" />
         <entry key="..\:/Users/Yomar/androidStudio-Workspace/RECODE/ProfessorAllocation/app/src/main/res/mipmap-anydpi-v26/ic_menu_edit_2.xml" value="0.10740740740740741" />

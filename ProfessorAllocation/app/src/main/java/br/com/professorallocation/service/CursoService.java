@@ -12,11 +12,15 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface CursoService {
 
     @GET("courses")
     Call<List<Curso>> getAll();
+
+    @GET("courses")
+    Call<List<Curso>> getByName(@Query("name") String name);
 
     @POST("/courses")
     Call<Curso> cadCurso(@Body CursoPostDto curso);

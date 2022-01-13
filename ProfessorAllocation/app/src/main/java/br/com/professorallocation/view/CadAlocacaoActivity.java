@@ -225,6 +225,7 @@ public class CadAlocacaoActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), " Communication error with the server! ", Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
     private void setupSpnCours(List<String> names, List<Curso> cursos){

@@ -8,18 +8,25 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import br.com.professorallocation.R;
 import br.com.professorallocation.config.RetrofitConfig;
 import br.com.professorallocation.databinding.ActivityProfessoresBinding;
+import br.com.professorallocation.model.Curso;
+import br.com.professorallocation.model.Departamento;
 import br.com.professorallocation.model.Professor;
+import br.com.professorallocation.service.CursoService;
+import br.com.professorallocation.service.DepartamentoService;
 import br.com.professorallocation.service.ProfessorService;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,7 +40,7 @@ public class ProfessoresActivity extends AppCompatActivity {
 
     @Override
     protected void onResume(){
-        requestCarregarListaDosProfessores();
+        requestCarregarListaDosProfessores("");
         super.onResume();
     }
 
@@ -104,7 +111,26 @@ public class ProfessoresActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_register, menu);
+        inflater.inflate(R.menu.menu_register_search, menu);
+
+        MenuItem search = menu.findItem(R.id.search_item);
+        SearchView editTextDeBusca = (SearchView)search.getActionView();
+        editTextDeBusca.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Log.d("Estado", "submit");
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                Log.d("Estado", "digitando");
+                requestCarregarListaDosProfessores(newText.toString());
+                return false;
+            }
+        });
+
         return true;
     }
 
@@ -119,38 +145,88 @@ public class ProfessoresActivity extends AppCompatActivity {
     }
 
 
-    private void requestCarregarListaDosProfessores(){
+    private void requestCarregarListaDosProfessores(String nomeProfessor){
         viewBinding.pbLoading.setVisibility(View.VISIBLE);
 
-        ProfessorService service = retrofitConfig.getProfessorService();
-        service.getAll().enqueue(new Callback<List<Professor>>() {
-            @Override
-            public void onResponse(Call<List<Professor>> call, Response<List<Professor>> response) {
-                viewBinding.pbLoading.setVisibility(View.GONE);
-                if (response.isSuccessful()) {
-                    List<Professor> list = response.body();
-                    adapter.setProfessorsList(list);
+        if(nomeProfessor!="") {
+            ProfessorService service = retrofitConfig.getProfessorService();
+            service.getByName(nomeProfessor).enqueue(new Callback<List<Professor>>() {
 
-                    for (Professor professor: list) {
-                        Log.d(ProfessoresActivity.class.getSimpleName(), professor.getName());
-                        Log.d(ProfessoresActivity.class.getSimpleName(), professor.getCpf());
-                        Log.d(ProfessoresActivity.class.getSimpleName(), String.valueOf(professor.getDepartmentId()));
+                List<Professor> ProfessorsFound = new ArrayList<>();
+                @Override
+                public void onResponse(Call<List<Professor>> call, Response<List<Professor>> response) {
+                    viewBinding.pbLoading.setVisibility(View.GONE);
+
+                    if (response.isSuccessful()) {
+
+                        List<Professor> professorsList = response.body();
+                        Departamento deptoProf = new Departamento();
+
+                        for (Professor searchProfessor : professorsList) {
+                            int idProfessorInt = searchProfessor.getId();
+                            String nomeProfessorStr = searchProfessor.getName();
+                            String cpfProfessorStr = searchProfessor.getCpf();
+                            int deptoProfessorInt = searchProfessor.getDepartmentId();
+                            String departmentProfessorStr = searchProfessor.getDepartment().getName();
+
+                            if (nomeProfessorStr.toLowerCase(Locale.ROOT).contains(nomeProfessor.toLowerCase(Locale.ROOT))){
+                                Professor professorMount = new Professor();
+                                professorMount.setId(idProfessorInt);
+                                professorMount.setName(nomeProfessorStr);
+                                professorMount.setCpf(cpfProfessorStr);
+
+                                deptoProf.setId(deptoProfessorInt);
+                                deptoProf.setName(departmentProfessorStr);
+
+                                professorMount.setDepartment(deptoProf);
+
+                                ProfessorsFound.add(professorMount);
+                            }
+                        }
+
+                        adapter.setProfessorsList(ProfessorsFound);
+
+                    } else {
+                        Toast.makeText(getApplicationContext(), " Error: " + response.errorBody().toString(), Toast.LENGTH_SHORT).show();
                     }
-                }else{
-                    Toast.makeText(getApplicationContext()," Error: " + response.errorBody().toString(), Toast.LENGTH_SHORT).show();
+
                 }
 
-            }
+                @Override
+                public void onFailure(Call<List<Professor>> call, Throwable t) {
+                    viewBinding.pbLoading.setVisibility(View.GONE);
 
-            @Override
-            public void onFailure(Call<List<Professor>> call, Throwable t) {
-                viewBinding.pbLoading.setVisibility(View.GONE);
-                Log.e(ProfessoresActivity.class.getSimpleName(),"Comunication error, " + t.getMessage());
-                Toast.makeText(getApplicationContext()," Communication error with the server! ", Toast.LENGTH_SHORT).show();
-            }
-        });
+                    Log.e(ProfessoresActivity.class.getSimpleName(), "Comunication error, " + t.getMessage());
+                    Toast.makeText(getApplicationContext(), " Communication error with the server! ", Toast.LENGTH_SHORT).show();
 
+                }
+            });
+
+        }else {
+
+            ProfessorService service = retrofitConfig.getProfessorService();
+            service.getAll().enqueue(new Callback<List<Professor>>() {
+                @Override
+                public void onResponse(Call<List<Professor>> call, Response<List<Professor>> response) {
+                    viewBinding.pbLoading.setVisibility(View.GONE);
+                    if (response.isSuccessful()) {
+                        List<Professor> list = response.body();
+                        adapter.setProfessorsList(list);
+
+                    } else {
+                        Toast.makeText(getApplicationContext(), " Error: " + response.errorBody().toString(), Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+
+                @Override
+                public void onFailure(Call<List<Professor>> call, Throwable t) {
+                    viewBinding.pbLoading.setVisibility(View.GONE);
+                    Log.e(ProfessoresActivity.class.getSimpleName(), "Comunication error, " + t.getMessage());
+                    Toast.makeText(getApplicationContext(), " Communication error with the server! ", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
-
 
 }

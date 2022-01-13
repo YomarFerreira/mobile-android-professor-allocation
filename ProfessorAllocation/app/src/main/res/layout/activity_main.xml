@@ -100,12 +100,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginBottom="150dp"
+
         android:background = "@drawable/roundedbutton"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bySurvivors"
         app:layout_constraintEnd_toStartOf="@id/llContentDepartment"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/llContentAllocation"
@@ -137,12 +137,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="150dp"
         android:background = "@drawable/roundedbutton"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bySurvivors"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/llContentCourse"
         app:layout_constraintTop_toBottomOf="@id/llContentProfessor">
@@ -167,6 +166,22 @@
             app:layout_constraintTop_toBottomOf="@+id/dpIcon" />
 
     </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/bySurvivors"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/survivors"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/llContentCourse" />
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

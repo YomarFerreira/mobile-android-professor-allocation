@@ -34,9 +34,6 @@ public class CadCursoActivity extends AppCompatActivity {
             Curso curso = (Curso) getIntent().getSerializableExtra(DetalhesCursoActivity.KEY_COURSE);
             if (curso != null) {
                 viewBinding.edCursoName.setText(curso.getName());
-
-
-
                 viewBinding.btCadCurso.setOnClickListener(view-> {
                     CursoPostDto cursoPut = new CursoPostDto ();
                     cursoPut.setName(viewBinding.edCursoName.getText().toString());

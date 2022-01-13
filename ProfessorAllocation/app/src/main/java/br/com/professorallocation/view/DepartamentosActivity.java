@@ -8,18 +8,23 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import br.com.professorallocation.R;
 import br.com.professorallocation.config.RetrofitConfig;
 import br.com.professorallocation.databinding.ActivityDepartamentosBinding;
+import br.com.professorallocation.model.Curso;
 import br.com.professorallocation.model.Departamento;
+import br.com.professorallocation.service.CursoService;
 import br.com.professorallocation.service.DepartamentoService;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,7 +38,7 @@ public class DepartamentosActivity extends AppCompatActivity {
 
     @Override
     protected void onResume(){
-        requestCarregarTodosOsDepartamentos();
+        requestCarregarTodosOsDepartamentos("");
         super.onResume();
     }
 
@@ -103,7 +108,26 @@ public class DepartamentosActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_register, menu);
+        inflater.inflate(R.menu.menu_register_search, menu);
+
+        MenuItem search = menu.findItem(R.id.search_item);
+        SearchView editTextDeBusca = (SearchView)search.getActionView();
+        editTextDeBusca.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Log.d("Estado", "submit");
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                Log.d("Estado", "digitando");
+                requestCarregarTodosOsDepartamentos(newText.toString());
+                return false;
+            }
+        });
+
         return true;
     }
 
@@ -118,38 +142,81 @@ public class DepartamentosActivity extends AppCompatActivity {
     }
 
 
-    private void requestCarregarTodosOsDepartamentos(){
+    private void requestCarregarTodosOsDepartamentos(String nomeDepartamento){
         viewBinding.pbLoading.setVisibility(View.VISIBLE);
 
-        DepartamentoService service = retrofitConfig.getDepartamentoService();
-        service.getAll().enqueue(new Callback<List<Departamento>>() {
-            @Override
-            public void onResponse(Call<List<Departamento>> call, Response<List<Departamento>> response) {
-                viewBinding.pbLoading.setVisibility(View.GONE);
-                if (response.isSuccessful()) {
-                    List<Departamento> list = response.body();
-                    adapter.setDepartamentosList(list);
+        if(nomeDepartamento!="") {
+            DepartamentoService service = retrofitConfig.getDepartamentoService();
+            service.getByName(nomeDepartamento).enqueue(new Callback<List<Departamento>>() {
 
-                    for (Departamento departamento: list) {
-                        Log.d(DepartamentosActivity.class.getSimpleName(), departamento.getName());
+                List<Departamento> DepartmentsFound = new ArrayList<>();
+                @Override
+                public void onResponse(Call<List<Departamento>> call, Response<List<Departamento>> response) {
+                    viewBinding.pbLoading.setVisibility(View.GONE);
+
+                    if (response.isSuccessful()) {
+
+                        List<Departamento> departamentosList = response.body();
+
+
+                        for (Departamento searchDepartment : departamentosList) {
+                            int idDepartamentoInt = searchDepartment.getId();
+                            String nomeDepartamentoStr = searchDepartment.getName();
+                            if (nomeDepartamentoStr.toLowerCase(Locale.ROOT).contains(nomeDepartamento.toLowerCase(Locale.ROOT))){
+                                Departamento departmentMount = new Departamento();
+                                departmentMount.setId(idDepartamentoInt);
+                                departmentMount.setName(nomeDepartamentoStr);
+
+                                DepartmentsFound.add(departmentMount);
+                            }
+                        }
+
+                        adapter.setDepartamentosList(DepartmentsFound);
+
+                    } else {
+                        Toast.makeText(getApplicationContext(), " Error: " + response.errorBody().toString(), Toast.LENGTH_SHORT).show();
                     }
-                }else{
-                    Toast.makeText(getApplicationContext()," Error: " + response.errorBody().toString(), Toast.LENGTH_SHORT).show();
+
                 }
 
-            }
+                @Override
+                public void onFailure(Call<List<Departamento>> call, Throwable t) {
+                    viewBinding.pbLoading.setVisibility(View.GONE);
 
-            @Override
-            public void onFailure(Call<List<Departamento>> call, Throwable t) {
-                viewBinding.pbLoading.setVisibility(View.GONE);
-                Log.e(DepartamentosActivity.class.getSimpleName(),"Comunication error, " + t.getMessage());
-                Toast.makeText(getApplicationContext()," Communication error with the server! ", Toast.LENGTH_SHORT).show();
-            }
-        });
+                    Log.e(DepartamentosActivity.class.getSimpleName(), "Comunication error, " + t.getMessage());
+                    Toast.makeText(getApplicationContext(), " Communication error with the server! ", Toast.LENGTH_SHORT).show();
+
+                }
+            });
+
+        }else {
+
+            DepartamentoService service = retrofitConfig.getDepartamentoService();
+            service.getAll().enqueue(new Callback<List<Departamento>>() {
+                @Override
+                public void onResponse(Call<List<Departamento>> call, Response<List<Departamento>> response) {
+                    viewBinding.pbLoading.setVisibility(View.GONE);
+                    if (response.isSuccessful()) {
+                        List<Departamento> list = response.body();
+                        adapter.setDepartamentosList(list);
+
+                        for (Departamento departamento: list) {
+                            Log.d(DepartamentosActivity.class.getSimpleName(), departamento.getName());
+                        }
+                    }else{
+                        Toast.makeText(getApplicationContext()," Error: " + response.errorBody().toString(), Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+
+                @Override
+                public void onFailure(Call<List<Departamento>> call, Throwable t) {
+                    viewBinding.pbLoading.setVisibility(View.GONE);
+                    Log.e(DepartamentosActivity.class.getSimpleName(),"Comunication error, " + t.getMessage());
+                    Toast.makeText(getApplicationContext()," Communication error with the server! ", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
 
     }
-
-
-
-
 }
